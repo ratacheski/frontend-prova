@@ -12,7 +12,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import {
+  MatPaginatorIntl,
+  MatPaginatorModule,
+} from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
 import {
@@ -31,6 +34,7 @@ import { HomeComponent } from './home/home.component';
 import { ClienteFormComponent } from './cliente/cliente-form.component';
 import { VendedorFormComponent } from './vendedor/vendedor-form.component';
 import { ProdutoFormComponent } from './produto/produto-form.component';
+import { MatPaginatorIntlPortuguese } from './config/mat-paginator-portuguese';
 
 @NgModule({
   declarations: [
@@ -74,6 +78,10 @@ import { ProdutoFormComponent } from './produto/produto-form.component';
         verticalPosition: 'top',
         horizontalPosition: 'end',
       },
+    },
+    {
+      provide: MatPaginatorIntl,
+      useValue: MatPaginatorIntlPortuguese(),
     },
   ],
   bootstrap: [AppComponent],
