@@ -22,35 +22,21 @@
   </button>
 </mat-toolbar>
 
-<div class="vendedor" mat-elevation-z8>
+<div class="vendedor">
   <form [formGroup]="form" id="ngForm" (ngSubmit)="onSubmit()">
-    <div class="form-row">
-      <div class="form-group col-5">
-        <label>Código</label>
-        <input
-          type="number"
-          formControlName="codigo"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.codigo.errors }"
-        />
-        <div *ngIf="submitted && f.codigo.errors" class="invalid-feedback">
-          <div *ngIf="f.codigo.errors.required">Código é obrigatório</div>
-        </div>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-7">
-        <label>Nome</label>
-        <input
-          type="text"
-          formControlName="nome"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.nome.errors }"
-        />
-        <div *ngIf="submitted && f.nome.errors" class="invalid-feedback">
-          <div *ngIf="f.nome.errors.required">Nome é obrigatório</div>
-        </div>
-      </div>
-    </div>
+    <mat-form-field class="form-field" appearance="fill">
+      <mat-label> Código </mat-label>
+      <input matInput formControlName="codigo" type="number" />
+      <mat-error *ngIf="f.codigo.touched && f.codigo.invalid">
+        <span *ngIf="f.codigo.errors?.required">Código é obrigatório</span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="fill">
+      <mat-label> Nome </mat-label>
+      <input matInput formControlName="nome" />
+      <mat-error *ngIf="f.nome.touched && f.nome.invalid">
+        <span *ngIf="f.nome.errors?.required">Nome é obrigatório</span>
+      </mat-error>
+    </mat-form-field>
   </form>
 </div>

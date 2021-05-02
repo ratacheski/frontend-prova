@@ -29,8 +29,8 @@ export class VendedorFormComponent implements OnInit {
     this.codigo = this.route.snapshot.params['codigo'];
     this.isAddMode = !this.codigo;
     this.form = this.formBuilder.group({
-      codigo: ['', Validators.required],
-      nome: ['', Validators.required],
+      codigo: [null, Validators.required],
+      nome: [null, Validators.required],
     });
 
     if (!this.isAddMode) {

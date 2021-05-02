@@ -3,6 +3,7 @@
   position: relative;
   min-height: 200px;
   margin: 0 auto;
+  padding-top: 10px;
 }
 
 .spinner-container {
@@ -29,4 +30,10 @@
 
 .align-end {
   justify-content: flex-end;
+}
+
+.form-container {
+  width: 400 px;
+  margin: 0 px auto;
+  margin-top: 200 px;
 }

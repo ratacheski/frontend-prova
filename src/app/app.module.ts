@@ -12,6 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+
 import {
   MatPaginatorIntl,
   MatPaginatorModule,
@@ -60,6 +62,7 @@ import { MatPaginatorIntlPortuguese } from './config/mat-paginator-portuguese';
     MatIconModule,
     MatListModule,
     MatInputModule,
+    MatSelectModule,
     MatProgressSpinnerModule,
     CdkTableModule,
     HttpClientModule,

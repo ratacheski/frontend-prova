@@ -1,3 +1,5 @@
+import { VendedorService } from './../vendedor/vendedor.service';
+import { Vendedor } from './../shared/models/Vendedor';
 import { ClienteService } from './cliente.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -13,15 +15,17 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ClienteFormComponent implements OnInit {
   form!: FormGroup;
   codigo!: number;
-  isAddMode!: boolean;
+  isAddMode = true;
   loading = false;
   submitted = false;
+  vendedores: Vendedor[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private service: ClienteService,
+    private vendedorService: VendedorService,
     private _snackBar: MatSnackBar
   ) {}
 
@@ -31,14 +35,26 @@ export class ClienteFormComponent implements OnInit {
     this.form = this.formBuilder.group({
       codigo: ['', Validators.required],
       nome: ['', Validators.required],
+      vendedor: [null, Validators.required],
     });
-
+    this.setValues();
+    this.vendedorService.findVendedores().subscribe((x) => {
+      this.vendedores = x.data;
+    });
+  }
+  setValues() {
     if (!this.isAddMode) {
-      console.log(this.codigo);
       this.service
         .getByCodigo(this.codigo)
         .pipe(first())
-        .subscribe((x) => this.form.patchValue(x));
+        .subscribe((x) => {
+          this.vendedores = [{ ...x.vendedor }];
+          this.form.setValue({
+            codigo: x.codigo,
+            nome: x.nome,
+            vendedor: x.vendedor,
+          });
+        });
     }
   }
 
@@ -46,6 +62,13 @@ export class ClienteFormComponent implements OnInit {
   get f() {
     return this.form.controls;
   }
+
+  public comparaVendedor = function (
+    option: Vendedor,
+    value: Vendedor
+  ): boolean {
+    return option.codigo === value.codigo;
+  };
 
   onSubmit() {
     this.submitted = true;
