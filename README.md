@@ -1,27 +1,26 @@
 # Prova
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.11.
+# Frontend Prova
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Tecnologias utilizadas
 
-## Code scaffolding
+- Frontend:
+  - [Angular CLI](https://github.com/angular/angular-cli) 
+  - Angular 11.2.11
+  - Material Angular 11.2.11.
+	
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Instruções para executar Frontend
 
-## Build
+- **Servidor de Desenvolvimento**
+  Executar `ng serve` para subir um servidor de desenvolvimento. Navegar para a url `http://localhost:4200/`.
+  
+- **Build**
+  Executar `ng build` para fazer o build do projeto. Os artefatos serão armazenados na pasta `dist/`. Use a flag `--prod` para efetuar um build de produção.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+	
+## Ferramentas utilizadas para o desenvolvimento
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Frontend 
+  - Visual Studio Code
