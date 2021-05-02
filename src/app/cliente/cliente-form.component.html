@@ -1,0 +1,56 @@
+<mat-toolbar color="primary">
+  <span *ngIf="isAddMode">Novo Cliente</span>
+  <span *ngIf="!isAddMode">Edição de Cliente</span>
+  <span class="spacer"></span>
+  <button
+    mat-button
+    color="accent"
+    style="margin-right: 10px"
+    routerLink="/cliente"
+  >
+    <mat-icon>undo</mat-icon>
+    Voltar
+  </button>
+  <button
+    mat-raised-button
+    color="accent"
+    form="ngForm"
+    [disabled]="!form.valid"
+  >
+    <mat-icon>save</mat-icon>
+    Salvar
+  </button>
+</mat-toolbar>
+
+<div class="cliente" mat-elevation-z8>
+  <form [formGroup]="form" id="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="form-group col-5">
+        <label>Código</label>
+        <input
+          type="number"
+          formControlName="codigo"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
+        />
+        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+          <div *ngIf="f.firstName.errors.required">First Name is required</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-7">
+        <label>Nome</label>
+        <input
+          type="text"
+          formControlName="nome"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+        />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">Email is required</div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

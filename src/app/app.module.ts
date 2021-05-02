@@ -25,9 +25,12 @@ import { ProdutoComponent } from './produto/produto.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CdkTableModule } from '@angular/cdk/table';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { HomeComponent } from './home/home.component';
+import { ClienteFormComponent } from './cliente/cliente-form.component';
+import { VendedorFormComponent } from './vendedor/vendedor-form.component';
+import { ProdutoFormComponent } from './produto/produto-form.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,9 @@ import { HomeComponent } from './home/home.component';
     ProdutoComponent,
     ConfirmDialogComponent,
     HomeComponent,
+    ClienteFormComponent,
+    VendedorFormComponent,
+    ProdutoFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +64,7 @@ import { HomeComponent } from './home/home.component';
     MatSortModule,
     MatSnackBarModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {

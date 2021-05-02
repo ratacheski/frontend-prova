@@ -1,5 +1,10 @@
 <mat-toolbar color="primary">
   <span>Produtos</span>
+  <span class="spacer"></span>
+  <button mat-raised-button color="accent" routerLink="/produto/novo">
+    <mat-icon>add</mat-icon>
+    Novo Produto
+  </button>
 </mat-toolbar>
 
 <div class="produto" mat-elevation-z8>
@@ -56,7 +61,7 @@
       >
       <mat-cell *matCellDef="let produto" class="align-end">
         <button mat-icon-button color="primary">
-          <mat-icon>edit</mat-icon>
+          <mat-icon [routerLink]="'/produto/' + produto.codigo">edit</mat-icon>
         </button>
         <button mat-icon-button color="warn" (click)="confirmDelete(produto)">
           <mat-icon>delete</mat-icon>

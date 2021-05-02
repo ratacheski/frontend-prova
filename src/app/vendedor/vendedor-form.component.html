@@ -1,0 +1,56 @@
+<mat-toolbar color="primary">
+  <span *ngIf="isAddMode">Novo Vendedor</span>
+  <span *ngIf="!isAddMode">Edição de Vendedor</span>
+  <span class="spacer"></span>
+  <button
+    mat-button
+    color="accent"
+    style="margin-right: 10px"
+    routerLink="/vendedor"
+  >
+    <mat-icon>undo</mat-icon>
+    Voltar
+  </button>
+  <button
+    mat-raised-button
+    color="accent"
+    form="ngForm"
+    [disabled]="!form.valid"
+  >
+    <mat-icon>save</mat-icon>
+    Salvar
+  </button>
+</mat-toolbar>
+
+<div class="vendedor" mat-elevation-z8>
+  <form [formGroup]="form" id="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="form-group col-5">
+        <label>Código</label>
+        <input
+          type="number"
+          formControlName="codigo"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.codigo.errors }"
+        />
+        <div *ngIf="submitted && f.codigo.errors" class="invalid-feedback">
+          <div *ngIf="f.codigo.errors.required">Código é obrigatório</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-7">
+        <label>Nome</label>
+        <input
+          type="text"
+          formControlName="nome"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.nome.errors }"
+        />
+        <div *ngIf="submitted && f.nome.errors" class="invalid-feedback">
+          <div *ngIf="f.nome.errors.required">Nome é obrigatório</div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

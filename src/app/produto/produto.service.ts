@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ProdutoResponse } from 'src/app/shared/models/Produto';
+import { Produto, ProdutoResponse } from 'src/app/shared/models/Produto';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -25,5 +25,18 @@ export class ProdutoService {
   }
   deleteProduto(codigo: number) {
     return this.http.delete<void>(environment.apiUrl + `produtos/${codigo}`);
+  }
+  getByCodigo(codigo: number): Observable<Produto> {
+    return this.http.get<Produto>(environment.apiUrl + 'produtos/' + codigo);
+  }
+  create(values: Produto): Observable<Produto> {
+    return this.http.post<Produto>(environment.apiUrl + 'produtos/', values);
+  }
+
+  update(codigo: number, values: Produto): Observable<Produto> {
+    return this.http.put<Produto>(
+      environment.apiUrl + `produtos/${codigo}`,
+      values
+    );
   }
 }

@@ -1,3 +1,4 @@
+import { ClienteResponse } from './../shared/models/Cliente';
 import { Cliente } from 'src/app/shared/models/Cliente';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -14,8 +15,8 @@ export class ClienteService {
     sort = 'asc',
     pageNumber = 0,
     pageSize = 5
-  ): Observable<Cliente[]> {
-    return this.http.get<Cliente[]>(environment.apiUrl + 'clientes', {
+  ): Observable<ClienteResponse> {
+    return this.http.get<ClienteResponse>(environment.apiUrl + 'clientes', {
       params: new HttpParams()
         .set('filter', filter)
         .set('sort', sort)
@@ -25,5 +26,18 @@ export class ClienteService {
   }
   deleteCliente(codigo: number) {
     return this.http.delete<void>(environment.apiUrl + `clientes/${codigo}`);
+  }
+  getByCodigo(codigo: number): Observable<Cliente> {
+    return this.http.get<Cliente>(environment.apiUrl + 'clientes/' + codigo);
+  }
+  create(values: Cliente): Observable<Cliente> {
+    return this.http.post<Cliente>(environment.apiUrl + 'clientes/', values);
+  }
+
+  update(codigo: number, values: Cliente): Observable<Cliente> {
+    return this.http.put<Cliente>(
+      environment.apiUrl + `clientes/${codigo}`,
+      values
+    );
   }
 }

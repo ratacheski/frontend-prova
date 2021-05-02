@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { VendedorResponse } from '../shared/models/Vendedor';
+import { Vendedor, VendedorResponse } from '../shared/models/Vendedor';
 
 @Injectable({
   providedIn: 'root',
@@ -25,5 +25,18 @@ export class VendedorService {
   }
   deleteVendedor(codigo: number) {
     return this.http.delete<void>(environment.apiUrl + `vendedores/${codigo}`);
+  }
+  getByCodigo(codigo: number): Observable<Vendedor> {
+    return this.http.get<Vendedor>(environment.apiUrl + 'vendedores/' + codigo);
+  }
+  create(values: Vendedor): Observable<Vendedor> {
+    return this.http.post<Vendedor>(environment.apiUrl + 'vendedores/', values);
+  }
+
+  update(codigo: number, values: Vendedor): Observable<Vendedor> {
+    return this.http.put<Vendedor>(
+      environment.apiUrl + `vendedores/${codigo}`,
+      values
+    );
   }
 }
