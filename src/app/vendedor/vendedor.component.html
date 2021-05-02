@@ -1,0 +1,78 @@
+<mat-toolbar color="primary">
+  <span>Vendedores</span>
+</mat-toolbar>
+
+<div class="vendedor" mat-elevation-z8>
+  <div class="spinner-container">
+    <mat-spinner *ngIf="dataSource.loading$ | async"></mat-spinner>
+  </div>
+
+  <mat-form-field>
+    <mat-icon matSuffix>search</mat-icon>
+    <input
+      matInput
+      placeholder="Filtrar vendedores"
+      [(ngModel)]="filter"
+      (ngModelChange)="handleFilter()"
+    />
+    <button
+      mat-button
+      *ngIf="filter"
+      matSuffix
+      mat-icon-button
+      aria-label="Limpar"
+      (click)="handleClearClick()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <mat-table
+    class="vendedores-table mat-elevation-z8"
+    [dataSource]="dataSource"
+    matSort
+    matSortActive="codigo"
+    matSortDirection="asc"
+    matSortDisableClear
+    (matSortChange)="handleSort($event)"
+  >
+    <ng-container matColumnDef="codigo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Código</mat-header-cell
+      >
+      <mat-cell *matCellDef="let vendedor">{{ vendedor.codigo }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nome">
+      <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+      <mat-cell class="nome-cell" *matCellDef="let vendedor">{{
+        vendedor.nome
+      }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="acoes">
+      <mat-header-cell *matHeaderCellDef class="align-end"
+        >Ações</mat-header-cell
+      >
+      <mat-cell *matCellDef="let vendedor" class="align-end">
+        <button mat-icon-button color="primary">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="confirmDelete(vendedor)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+
+  <mat-paginator
+    [length]="dataSource.count$ | async"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="handlePage($event)"
+  ></mat-paginator>
+</div>

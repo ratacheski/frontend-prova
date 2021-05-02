@@ -1,0 +1,32 @@
+.produto {
+  text-align: center;
+  position: relative;
+  min-height: 200px;
+  margin: 0 auto;
+}
+
+.spinner-container {
+  width: 100%;
+  margin-top: 10px;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.spinner-container mat-spinner {
+  margin: 130px auto;
+}
+
+.produtos-table {
+  min-height: 360px;
+  margin-top: 10px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.align-end {
+  justify-content: flex-end;
+}
