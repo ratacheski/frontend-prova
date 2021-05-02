@@ -1,0 +1,59 @@
+.container {
+  margin-top: 100px;
+}
+
+.github-api,
+.github-front {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  float: left;
+  div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    svg {
+      width: 300px;
+      height: 300px;
+    }
+    .link-api,
+    .link-front {
+      font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
+      letter-spacing: normal;
+      margin-top: 10px;
+      font-size: 2rem;
+      text-decoration: none;
+    }
+    .link-api {
+      color: #ffd740;
+    }
+    .link-front {
+      color: #673ab7;
+    }
+  }
+}
+
+.github-api {
+  fill: #ffd740;
+}
+.github-front {
+  fill: #673ab7;
+}
+
+@media (max-width: 900px) {
+  .container {
+    margin-top: 50px;
+  }
+  .github-api,
+  .github-front {
+    margin-top: 30px;
+    width: 100%;
+    float: left;
+    div {
+      svg {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }
+}
